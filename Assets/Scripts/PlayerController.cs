@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private int health = 5;
     public Text scoreText;
     public Text healthText;
+    public Image winLoseBG;
+    public Text winLoseText;
     private Rigidbody playerBody;
 
     // Start is called before the first frame update
@@ -19,6 +21,7 @@ public class PlayerController : MonoBehaviour
         playerBody = GetComponent<Rigidbody>();
         SetScoreText();
         SetHealthText();
+        winLoseBG.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -47,7 +50,15 @@ public class PlayerController : MonoBehaviour
 
         if (other.tag == "Goal")
         {
-            Debug.Log("You win!");
+            // Debug.Log("You win!");
+            winLoseBG.gameObject.SetActive(true);
+            winLoseBG.color = Color.green;
+
+            winLoseText.text = "You Win!";
+
+            winLoseText.color = Color.black;
+            StartCoroutine(LoadScene(3));
+
         }
 
         if (other.tag == "Teleporter")
@@ -60,9 +71,22 @@ public class PlayerController : MonoBehaviour
     {
         if (health == 0)
         {
-            Debug.Log("Game Over!");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //Debug.Log("Game Over!");
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            winLoseBG.gameObject.SetActive(true);
+            winLoseBG.color = Color.red;
+
+            winLoseText.text = "Game Over!";
+
+            winLoseText.color = Color.white;
+            StartCoroutine(LoadScene(3));
         }
+    }
+
+    IEnumerator LoadScene(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     void SetScoreText()
