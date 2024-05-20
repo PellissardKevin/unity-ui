@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
@@ -8,13 +9,14 @@ public class PlayerController : MonoBehaviour
     public float speed = 0.1f;
     private int score = 0;
     private int health = 5;
+    public Text scoreText;
     private Rigidbody playerBody;
 
     // Start is called before the first frame update
     void Start()
     {
         playerBody = GetComponent<Rigidbody>();
-
+        SetScoreText();
     }
 
     // Update is called once per frame
@@ -29,7 +31,8 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Pickup")
         {
             score++;
-            Debug.Log("Score: " + score);
+            // Debug.Log("Score: " + score);
+            SetScoreText();
             Destroy(other.gameObject);
         }
 
@@ -57,5 +60,11 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Game Over!");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+    }
+
+    void SetScoreText()
+    {
+        scoreText.text = "Score: " + score;
+        Debug.Log(scoreText);
     }
 }
