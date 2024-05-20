@@ -81,6 +81,12 @@ public class PlayerController : MonoBehaviour
             winLoseText.color = Color.white;
             StartCoroutine(LoadScene(3));
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            // Load the menu scene
+            SceneManager.LoadScene("menu");
+        }
     }
 
     IEnumerator LoadScene(float seconds)

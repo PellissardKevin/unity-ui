@@ -1910,7 +1910,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
@@ -5873,6 +5873,8 @@ MonoBehaviour:
   speed: 1000
   scoreText: {fileID: 1295594588}
   healthText: {fileID: 157360603}
+  winLoseBG: {fileID: 1742425977}
+  winLoseText: {fileID: 350507559}
 --- !u!1001 &1454826680
 PrefabInstance:
   m_ObjectHideFlags: 0
