@@ -72,7 +72,6 @@ public class PlayerController : MonoBehaviour
         if (health == 0)
         {
             //Debug.Log("Game Over!");
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             winLoseBG.gameObject.SetActive(true);
             winLoseBG.color = Color.red;
 
